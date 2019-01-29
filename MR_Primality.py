@@ -27,6 +27,7 @@ def kprimes(limit):
 # Another, more efficient algorithm #
 #####################################
 import random
+import sys
 
 def sieve(suspect, pList, abovePlaces = 0, below = 0): #Sieve a single suspect, as last resort
     if below == 0:
@@ -151,6 +152,8 @@ factPComp = 2
 flist = [2, 6, 24, 120] #initial factorial numbers
 
 while n < limit:
+    sys.stdout.write("\rCurrently trialling: %i" % n)
+    sys.stdout.flush()
     comp = 0
 
     comp = sieve(n, usualSuspects, 1) #Quick mod check against small primes
@@ -200,6 +203,7 @@ while n < limit:
     n += 2
 
 #Print results
+print()
 print('We found',len(primes), 'prime numbers.')
 print('The more, the merrier!')
 
